@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Pricing Plans</h1>
+        <p>Choose the perfect plan for your needs</p>
+    </div>
+</section>
+
+<section class="pricing-section">
+    <div class="container">
+        <div class="pricing-grid">
+            <% pricingPlans.forEach(plan => { %>
+            <div class="pricing-card <%= plan.popular ? 'popular' : '' %>">
+                <% if (plan.popular) { %>
+                <div class="popular-badge">Most Popular</div>
+                <% } %>
+                <h3><%= plan.name %></h3>
+                <div class="price">
+                    <span class="currency">$</span>
+                    <span class="amount"><%= plan.price %></span>
+                    <span class="period">/month</span>
+                </div>
+                <ul class="features-list">
+                    <% plan.features.forEach(feature => { %>
+                    <li><i class="fas fa-check"></i> <%= feature %></li>
+                    <% }); %>
+                </ul>
+                <a href="#" class="btn <%= plan.popular ? 'btn-primary' : 'btn-secondary' %> btn-block">Get Started</a>
+            </div>
+            <% }); %>
+        </div>
+        
+        <div class="pricing-faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h4>Can I upgrade my plan later?</h4>
+                <p>Yes! You can upgrade or downgrade your plan at any time.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Is there a money-back guarantee?</h4>
+                <p>We offer a 30-day money-back guarantee on all plans.</p>
+            </div>
+            <div class="faq-item">
+                <h4>What payment methods do you accept?</h4>
+                <p>We accept all major credit cards, PayPal, and bank transfers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('partials/footer') %>
